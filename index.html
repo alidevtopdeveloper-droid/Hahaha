@@ -2,6 +2,85 @@
   <source src="https://raw.githubusercontent.com/alidevtopdeveloper-droid/Hahaha/main/TheoryOfEverything4.mp3" type="audio/mpeg">
 </audio>
 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Таймер 10 минут</title>
+<style>
+  body {
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  h1 {
+    font-size: 48px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px #38bdf8;
+  }
+  #timer {
+    font-size: 80px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(59,130,246,0.4);
+  }
+  button {
+    margin-top: 30px;
+    padding: 10px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(90deg, #2563eb, #4f46e5);
+    transition: 0.3s;
+  }
+  button:hover {
+    background: linear-gradient(90deg, #3b82f6, #6366f1);
+    transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+  <h1>Таймер на 10 минут</h1>
+  <div id="timer">10:00</div>
+  <button onclick="startTimer()">▶️ Старт</button>
+
+  <script>
+    let duration = 10 * 60; // 10 минут
+    let timerDisplay = document.getElementById('timer');
+    let interval;
+    let running = false;
+
+    function startTimer() {
+      if (running) return;
+      running = true;
+      let time = duration;
+      interval = setInterval(() => {
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+        timerDisplay.textContent = 
+          `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        if (time-- <= 0) {
+          clearInterval(interval);
+          running = false;
+          alert("⏰ Время вышло!");
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
 
 
 <script>
